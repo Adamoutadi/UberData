@@ -21,6 +21,13 @@ Groups the data by hour of the day and month of the year, and counts the number 
 Groups the data by day of the month and month of the year, and counts the number of trips in each group
 Groups the data by day of the week and month of the year, and counts the number of trips in each group
 Groups the data by Uber base code and month of the year, and counts the number of trips in each group
+
+```
+trips_by_full_month <- uber_data %>%
+  group_by(day = day(Date.Time), month = month(Date.Time, label = TRUE)) %>%
+  summarise(trips = n()) %>%
+  arrange(day)
+```
 Creates a data frame of number of trips by day and hour of the day
 Creates a data frame of number of trips by base and day of the week
 Creates a data frame of number of trips by latitude and longitude
@@ -58,7 +65,7 @@ A heatmap that displays the number of trips taken per day across different month
 A map that shows 2000 of the latitude and longitude coordinates. All of the points are on the east side of the US.
 <img width="894" alt="Screen Shot 2023-05-04 at 8 12 46 PM" src="https://user-images.githubusercontent.com/75454891/236359983-9f7f16db-8e84-48a8-b7db-4010de69e942.png">
 
-#Predictions 📉
+# Predictions 📉
 
 The predictive model uses the Uber dataset to predict the number of trips for a given date and time. The model uses the following libraries:
 dplyr
