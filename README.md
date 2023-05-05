@@ -30,6 +30,12 @@ trips_by_full_month <- uber_data %>%
 ```
 Creates a data frame of number of trips by day and hour of the day
 Creates a data frame of number of trips by base and day of the week
+
+```
+trips_by_lat_lon <- uber_data %>%
+  group_by(lat = Lat, lon = Lon) %>%
+  summarise(trips = n()) 
+```
 Creates a data frame of number of trips by latitude and longitude
 The code writes the resulting data frames to CSV files in the same directory as the R code.
 Output
@@ -44,6 +50,17 @@ trips_by_base_day.csv
 trips_by_month_week.csv
 trips_by_lat_lon.csv
 
+```
+write.csv(trips_by_hour, file = "trips_by_hour.csv")
+write.csv(trips_by_hour_month, file = "trips_by_hour_month.csv")
+write.csv(trips_by_full_month, file = "trips_by_full_month.csv")
+write.csv(trips_by_day_month, file = "trips_by_day_month.csv") 
+write.csv(trips_by_base_month, file = "trips_by_base_month.csv")
+write.csv(trips_by_hour_day, file = "trips_by_hour_day.csv")
+write.csv(trips_by_base_day, file = "trips_by_base_day.csv")
+write.csv(trips_by_month_week, file = "trips_by_month_week.csv")
+write.csv(trips_by_lat_lon, file = "trips_by_lat_lon.csv")
+```
 # Maps and Predictive Model 🗺️ ✍️
 The following maps have been created:
 A graph that displays the number of trips for each hour, covering the time frame of hour 0 to 23. This map uses the geom_col() function.
